@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="short_description" label="Short Description" language="en" table="x_sthc_contract_in_contract_intake_review">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>short_description</element>
+            <help/>
+            <hint/>
+            <label>Short Description</label>
+            <language>en</language>
+            <name>x_sthc_contract_in_contract_intake_review</name>
+            <plural>Short Descriptions</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>LGOMEZ</sys_created_by>
+            <sys_created_on>2019-12-31 00:32:41</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>85bfd2a1db460098b3d8fcfa0c961909</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Short Description</sys_name>
+            <sys_package display_value="Contract Intake Review" source="x_sthc_contract_in">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Contract Intake Review">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_scope>
+            <sys_update_name>sys_documentation_x_sthc_contract_in_contract_intake_review_short_description_en</sys_update_name>
+            <sys_updated_by>LGOMEZ</sys_updated_by>
+            <sys_updated_on>2019-12-31 00:32:41</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

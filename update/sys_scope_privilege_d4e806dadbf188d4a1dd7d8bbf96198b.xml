@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="INSERT_OR_UPDATE">
+        <operation>read</operation>
+        <source_scope display_value="Contract Intake Review">74a2bee9db3dc0d4a1dd7d8bbf961997</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>LGOMEZ</sys_created_by>
+        <sys_created_on>2019-12-20 20:32:41</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>d4e806dadbf188d4a1dd7d8bbf96198b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>im_module</sys_name>
+        <sys_package display_value="Contract Intake Review" source="x_sthc_contract_in">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Contract Intake Review">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_scope>
+        <sys_update_name>sys_scope_privilege_d4e806dadbf188d4a1dd7d8bbf96198b</sys_update_name>
+        <sys_updated_by>LGOMEZ</sys_updated_by>
+        <sys_updated_on>2019-12-20 20:32:41</sys_updated_on>
+        <target_name>im_module</target_name>
+        <target_scope display_value="Global">global</target_scope>
+        <target_type>sys_db_object</target_type>
+    </sys_scope_privilege>
+</record_update>

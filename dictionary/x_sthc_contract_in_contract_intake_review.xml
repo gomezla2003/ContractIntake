@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Contract Intake Review" max_length="40" name="x_sthc_contract_in_contract_intake_review" type="collection">
+        <element choice="1" label="Ability to Exit" max_length="40" name="ability_to_exit" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="No Cost, No Notification" sequence="1" value="1"/>
+                <element inactive_on_update="false" label="No Cost, Notification Required" sequence="2" value="2"/>
+                <element inactive_on_update="false" label="&lt;$5000 Cost, Notification Required" sequence="3" value="3"/>
+                <element inactive_on_update="false" label="&gt;$5000 Cost, Stipulations, Strings Attached" sequence="4" value="4"/>
+                <element inactive_on_update="false" label="&gt;50,000 Cost, Stipulations, Strings Attached" sequence="5" value="5"/>
+            </choice>
+        </element>
+        <element label="Ability to Exit Value" max_length="40" name="ability_to_exit_value" type="integer"/>
+        <element label="Contract ID" max_length="40" name="contract_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Contract Owner" max_length="40" name="contract_owner" type="string"/>
+        <element label="Final Risk Score" max_length="40" name="final_risk_score" type="string"/>
+        <element choice="1" label="Historical Compliance to Standards" max_length="40" name="historical_compliance_to_standards" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Always Positive" sequence="1" value="1"/>
+                <element inactive_on_update="false" label="Usually Positive" sequence="2" value="2"/>
+                <element inactive_on_update="false" label="Sometimes Positive" sequence="3" value="3"/>
+                <element inactive_on_update="false" label="Sometimes or Usually Negative" sequence="4" value="4"/>
+                <element inactive_on_update="false" label="New/no history" sequence="5" value="1"/>
+            </choice>
+        </element>
+        <element label="Historical Compliance to Standards Value" max_length="40" name="historical_compliance_to_standards_value" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Home Department" max_length="40" name="home_department" type="string"/>
+        <element choice="1" label="HonorHealth to Vendor Relationship" max_length="40" name="honorhealth_to_vendor_relationship" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Excellent" sequence="1" value="1"/>
+                <element inactive_on_update="false" label="Good" sequence="2" value="2"/>
+                <element inactive_on_update="false" label="Fair" sequence="3" value="3"/>
+                <element inactive_on_update="false" label="Poor" sequence="4" value="4"/>
+                <element inactive_on_update="false" label="Unkown" sequence="5" value="0"/>
+            </choice>
+        </element>
+        <element label="HonorHealth to Vendor Relationship Value" max_length="40" name="honorhealth_to_vendor_relationship_value" type="integer"/>
+        <element choice="1" label="Impact to Patient Care" max_length="40" name="impact_to_patient_care" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Never" sequence="1" value="1"/>
+                <element inactive_on_update="false" label="Rarely" sequence="2" value="2"/>
+                <element inactive_on_update="false" label="Weekly" sequence="3" value="3"/>
+                <element inactive_on_update="false" label="Daily" sequence="4" value="4"/>
+                <element inactive_on_update="false" label="Hourly" sequence="5" value="5"/>
+            </choice>
+        </element>
+        <element label="Impact to Patient Care Value" max_length="40" name="impact_to_patient_care_value" type="integer"/>
+        <element choice="1" label="Length of Commitment" max_length="40" name="length_of_commitment" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Less than 1 year" sequence="1" value="1"/>
+                <element inactive_on_update="false" label="Less than 2 years" sequence="2" value="2"/>
+                <element inactive_on_update="false" label="Less than 3 years" sequence="3" value="3"/>
+                <element inactive_on_update="false" label="Less than 5 years" sequence="4" value="4"/>
+                <element inactive_on_update="false" label="More than 5 years" sequence="5" value="5"/>
+            </choice>
+        </element>
+        <element label="Length of Commitment Value" max_length="40" name="length_of_commitment_value" type="integer"/>
+        <element choice="1" label="Scope of Impact" max_length="40" name="scope_of_impact" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Campus" value="2"/>
+                <element inactive_on_update="false" label="Department" value="3"/>
+                <element inactive_on_update="false" label="Network Wide" value="1"/>
+            </choice>
+        </element>
+        <element label="Scope of Impact Value" max_length="40" name="scope_of_impact_value" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Service Provided" max_length="40" name="service_provided" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Short Description" max_length="100" name="short_description" type="string"/>
+    </element>
+</database>

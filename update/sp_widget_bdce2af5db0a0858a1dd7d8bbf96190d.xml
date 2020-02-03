@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($rootScope,$scope) {
+  /* widget controller */
+  var c = this;
+
+	
+	scope.$on('widget-contract-intake-found', function(event, args) {
+		c.server.update();
+	});
+	
+c.click = function(id){
+	var list = c.data.list;
+	for(var i=0; i<list.length;i++){
+		if(list[i].sysID == id){
+			$rootScope.$broadcast('widget-contract-intake-found',list[i]);
+				$rootScope.$broadcast('widget-contract-intake-click',list[i]);
+		}
+	}	
+}
+	
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>contract_intake_3</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) { 
+
+	
+	
+	
+	
+	
+	
+			
+	
+	
+ }
+
+
+]]></link>
+        <name>Contract Intake 3</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	
+	data.list = [];
+	
+	data.list = getContracts();
+	
+	if(input){
+
+	}
+
+})();
+
+
+
+function getContracts(){
+
+	var array = [];
+	var module = new GlideRecord('x_sthc_contract_in_contract_intake_review');
+	
+		//crChange.setLimit(100);
+		module.query();
+		
+		
+		while (module.next()){
+			var contract ={};
+			contract.sysID = module.getUniqueValue();
+			contract.ability_to_exit = module.getDisplayValue('ability_to_exit');
+			contract.final_risk_score = module.getDisplayValue('final_risk_score');
+			contract.historical_compliance_to_standards = module.getDisplayValue('historical_compliance_to_standards');
+			contract.honorhealth_to_vendor_relationship = module.getDisplayValue('honorhealth_to_vendor_relationship');
+			contract.impact_to_patient_care = module.getDisplayValue('impact_to_patient_care');
+			contract.length_of_commitment = module.getDisplayValue('length_of_commitment');
+			contract.scope_of_impact = module.getDisplayValue('scope_of_impact');
+			contract.contract_id = module.getDisplayValue('contract_id');
+			contract.short_description = module.getDisplayValue('short_description');
+			contract.contract_owner = module.getDisplayValue('contract_owner');
+			contract.home_department = module.getDisplayValue('home_department');
+			contract.service_provided = module.getDisplayValue('service_provided');
+			
+			contract.impact_to_patient_care_value = module.getDisplayValue('impact_to_patient_care_value');
+			contract.scope_of_impact_value = module.getDisplayValue('scope_of_impact_value');
+			contract.ability_to_exit_value = module.getDisplayValue('ability_to_exit_value');
+			contract.length_of_commitment_value = module.getDisplayValue('length_of_commitment_value');
+			contract.honorhealth_to_vendor_relationship_value = module.getDisplayValue('honorhealth_to_vendor_relationship_value');
+			contract.historical_compliance_to_standards_value = module.getDisplayValue('historical_compliance_to_standards_value');
+
+			contract.updated_by = module.getDisplayValue('sys_updated_by');
+			contract.updated = module.getDisplayValue('sys_updated_on');
+			
+			contract.patient_care_value = module.getValue('impact_to_patient_care');
+			contract.scope_value = module.getValue('scope_of_impact');
+			contract.exit_value = module.getValue('ability_to_exit');
+			contract.commitment_value = module.getValue('length_of_commitment');
+			contract.relationship_value = module.getValue('honorhealth_to_vendor_relationship');
+			contract.compliance_value =module.getValue('historical_compliance_to_standards');
+			
+			array.push(contract);
+		}
+	
+return array;
+}]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>lgomez</sys_created_by>
+        <sys_created_on>2019-12-31 20:17:00</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>bdce2af5db0a0858a1dd7d8bbf96190d</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>Contract Intake 3</sys_name>
+        <sys_package display_value="Contract Intake Review" source="x_sthc_contract_in">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Contract Intake Review">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_scope>
+        <sys_update_name>sp_widget_bdce2af5db0a0858a1dd7d8bbf96190d</sys_update_name>
+        <sys_updated_by>lgomez</sys_updated_by>
+        <sys_updated_on>2019-12-31 21:19:44</sys_updated_on>
+        <template><![CDATA[<div class="list-group">
+  <a ng-click="c.click(contract.sysID)" ng-repeat="contract in data.list" href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{contract.short_description}}</h5>
+      <small><span>Updated: </span>{{contract.updated}}</small>
+    </div>
+    <p class="mb-1">Final Risk Score {{contract.final_risk_score}}</p>
+    <p class="mb-1">Contract Number {{contract.contract_id}}</p>
+    
+  </a>
+ 
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

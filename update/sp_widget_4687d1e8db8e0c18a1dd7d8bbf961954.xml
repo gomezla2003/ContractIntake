@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+	
+	scope.$on('widget-contract-intake-found', function(event, args) {
+		c.data.obj = args;
+
+  });
+	
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.body{
+   border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px; 
+  margin-top:10px;
+  font-size: 1.5em;
+  width: 100%
+
+}
+
+th, td { 
+  padding-bottom:15px 
+}
+
+img{
+  max-width: 50%;
+    max-height: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>contract_intake_2</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Contract Intake 2</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+	
+	
+})();
+
+
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>lgomez</sys_created_by>
+        <sys_created_on>2019-12-27 16:43:25</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>4687d1e8db8e0c18a1dd7d8bbf961954</sys_id>
+        <sys_mod_count>73</sys_mod_count>
+        <sys_name>Contract Intake 2</sys_name>
+        <sys_package display_value="Contract Intake Review" source="x_sthc_contract_in">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Contract Intake Review">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_scope>
+        <sys_update_name>sp_widget_4687d1e8db8e0c18a1dd7d8bbf961954</sys_update_name>
+        <sys_updated_by>lgomez</sys_updated_by>
+        <sys_updated_on>2020-01-03 16:07:08</sys_updated_on>
+        <template><![CDATA[<div class="body">
+<!-- your widget template -->
+  
+  <h4>
+    Last updated by <b>{{data.obj.updated_by}}</b> on <b>{{data.obj.updated}}</b>
+  </h4>
+  <br>
+  <h4>
+    <p><b>Short Description:</b> {{data.obj.short_description}}</p>
+    <p><b>Contract Owner:</b> {{data.obj.contract_owner}}</p>
+    <p><b>Home Department:</b> {{data.obj.home_department}}</p>
+    <p><b>Service Provided:</b> {{data.obj.service_provided}}</p>
+  </h4>
+  
+  <br><br>
+  
+  
+  <table style="width:100%">
+  <tr>
+    <th>Descriptor</th>
+    <th>Ranking</th> 
+    <th>Score</th>
+  </tr>
+  <tr>
+    <td>Impact to Patient Care</td>
+    <td>{{data.obj.impact_to_patient_care}}</td> 
+    <td>{{data.obj.impact_to_patient_care_value}}</td>
+  </tr>
+  <tr>
+    <td>Scope of Impact</td>
+    <td>{{data.obj.scope_of_impact}}</td> 
+    <td>{{data.obj.scope_of_impact_value}}</td>
+  </tr>
+     <tr>
+    <td>Ability to Exit</td>
+    <td>{{data.obj.ability_to_exit}}</td> 
+    <td>{{data.obj.ability_to_exit_value}}</td>
+  </tr>
+     <tr>
+    <td>Length of Commitment</td>
+    <td>{{data.obj.length_of_commitment}}</td> 
+    <td>{{data.obj.length_of_commitment_value}}</td>
+  </tr>
+     <tr>
+    <td>HonorHealth to Vendor Relationship</td>
+    <td>{{data.obj.honorhealth_to_vendor_relationship}}</td> 
+    <td>{{data.obj.honorhealth_to_vendor_relationship_value}}</td>
+  </tr>
+     <tr>
+    <td>Historical Compliance to Standards</td>
+    <td>{{data.obj.historical_compliance_to_standards}}</td> 
+    <td>{{data.obj.historical_compliance_to_standards_value}}</td>
+  </tr>
+    <tr>
+    <td><b>FINAL RISK SCORE</b></td>
+    <td></td> 
+    <td><b><mark>{{data.obj.final_risk_score}}</mark></b></td>
+  </tr>
+</table>
+  
+  
+  <img ng-if="data.obj.final_risk_score > 34" src="high.jpg" alt="high">
+  <img ng-if="data.obj.final_risk_score >=25 && data.obj.final_risk_score <=34" src="medium.jpg" alt="medium">
+  <img ng-if="data.obj.final_risk_score < 25" src="low.jpg" alt="low">
+  
+  
+</div>]]></template>
+    </sp_widget>
+</record_update>

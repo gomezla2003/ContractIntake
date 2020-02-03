@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>2</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">025eeaf5db0a0858a1dd7d8bbf961961</sp_column>
+        <sp_widget display_value="Contract Intake 3">bdce2af5db0a0858a1dd7d8bbf96190d</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>lgomez</sys_created_by>
+        <sys_created_on>2019-12-31 20:50:23</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>ba66be39db0a0858a1dd7d8bbf96194c</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Contract Intake Review" source="x_sthc_contract_in">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Contract Intake Review">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_scope>
+        <sys_update_name>sp_instance_ba66be39db0a0858a1dd7d8bbf96194c</sys_update_name>
+        <sys_updated_by>lgomez</sys_updated_by>
+        <sys_updated_on>2019-12-31 21:20:05</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=ba66be39db0a0858a1dd7d8bbf96194c"/>
+</record_update>

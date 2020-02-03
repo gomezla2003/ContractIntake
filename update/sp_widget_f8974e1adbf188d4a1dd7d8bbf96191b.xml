@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($rootScope,$scope) {
+  /* widget controller */
+  var c = this;
+
+	
+c.data.found = false;
+	
+scope.$on('widget-contract-intake-click', function(event, args) {
+	c.data.found = true;
+		c.data.obj = args;
+			c.data.impact_to_patient_care = args.patient_care_value;
+			c.data.scope_of_impact = args.scope_value;
+			c.data.ability_to_exit = args.exit_value;
+			c.data.length_of_commitment = args.commitment_value;
+			c.data.honorhealth_to_vendor_relationship = args.relationship_value;
+			c.data.historical_compliance_to_standards = args.compliance_value;			
+			c.data.short_description = args.short_description;
+				c.data.contract_owner = args.contract_owner;
+				c.data.home_department = args.home_department;
+				c.data.service_provided = args.service_provided;
+			c.data.contract_number = args.contract_id;
+	c.data.sysID = args.sysID;
+});
+			
+			
+			
+	c.clear = function(){
+		c.data.impact_to_patient_care = '';
+			c.data.scope_of_impact = '';
+			c.data.ability_to_exit = '';
+			c.data.length_of_commitment = '';
+			c.data.honorhealth_to_vendor_relationship = '';
+			c.data.historical_compliance_to_standards = '';			
+			c.data.short_description = '';
+				c.data.contract_owner = '';
+				c.data.home_department = '';
+				c.data.service_provided = '';
+			c.data.contract_number = '';
+		c.data.found = false;
+		$rootScope.$broadcast('widget-contract-intake-found');
+	}		
+			
+			
+			
+	
+	c.idChange = function(){
+		var list = c.data.list;
+		
+		for(var i=0; i<list.length;i++){
+			if(list[i].contract_id == c.data.contract_number){
+				swal('Exisiting Record Found','An existing contract intake was found','info');
+				c.data.found = true;
+				$rootScope.$broadcast('widget-contract-intake-found',list[i]);
+			c.data.impact_to_patient_care = list[i].patient_care_value;
+			c.data.scope_of_impact = list[i].scope_value;
+			c.data.ability_to_exit = list[i].exit_value;
+			c.data.length_of_commitment = list[i].commitment_value;
+			c.data.honorhealth_to_vendor_relationship = list[i].relationship_value;
+			c.data.historical_compliance_to_standards = list[i].compliance_value;			
+			c.data.short_description = list[i].short_description;
+				c.data.contract_owner = list[i].contract_owner;
+				c.data.home_department = list[i].home_department;
+				c.data.service_provided = list[i].service_provided;
+				
+				
+				c.data.sysID = list[i].sysID;
+			}}}
+	
+	c.update = function(){
+		
+		c.data.update = true;
+		c.server.update().then(function(resp){
+			var list = c.data.list;
+		for(var i=0; i<list.length;i++){
+			if(list[i].contract_id == c.data.contract_number){
+				$rootScope.$broadcast('widget-contract-intake-found',list[i]);
+				swal('Record Updated','This record has been updated','success');
+		}}});
+}
+	
+	c.submit = function(){
+		c.data.submit = true;
+		c.server.update().then(function(resp){
+			var list = c.data.list;
+		for(var i=0; i<list.length;i++){
+			if(list[i].contract_id == c.data.contract_number){
+				c.data.found = true;
+				$rootScope.$broadcast('widget-contract-intake-found',list[i]);
+				swal('New Record Created','You have created a new Contract Intake Record','success');
+		}}});
+	}
+	
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>button{
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  //margin: 4px 42px;
+  margin:10px;
+  cursor: pointer;
+  border-radius: 12px;
+  float:right;
+  
+}
+
+
+.button {
+  background-color: #4CAF50; /* Green */
+}
+
+
+.buttonRed {
+  background-color: red; /* Green */
+
+}
+
+
+.form{
+  font-size: 1.4em;
+}
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) { 
+
+	
+	
+	
+	
+	
+	
+			
+	
+	
+ }
+
+
+]]></link>
+        <name>Contract Intake</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	
+	data.list = [];
+	
+	data.list = getContracts();
+	
+	if(input){
+		if(input.update){
+			update(input.sysID)
+			data.list = getContracts();
+			input.update = false;
+		}
+		
+		if(input.submit){
+			submit();
+			data.list = getContracts();
+			input.submit = false;
+			
+		}
+	}
+
+})();
+
+function submit(){
+	var gr = new GlideRecord('x_sthc_contract_in_contract_intake_review');
+	//gr.initalize();
+	gr.setValue('contract_id',input.contract_number);
+	gr.setValue('impact_to_patient_care', input.impact_to_patient_care);
+	gr.setValue('scope_of_impact', input.scope_of_impact);
+	gr.setValue('ability_to_exit',input.ability_to_exit);
+	gr.setValue('length_of_commitment', input.length_of_commitment);
+	gr.setValue('honorhealth_to_vendor_relationship', input.honorhealth_to_vendor_relationship);
+	gr.setValue('historical_compliance_to_standards', input.historical_compliance_to_standards);
+	gr.setValue('short_description', input.short_description);
+	gr.setValue('contract_owner',input.contract_owner);
+	gr.setValue('home_department', input.home_department);
+	gr.setValue('service_provided', input.service_provided);
+	
+	gr.insert();
+}
+
+
+function update(id){
+	var gr = new GlideRecord('x_sthc_contract_in_contract_intake_review');
+	gr.get(id);
+	gr.setValue('short_description',input.short_description);
+	gr.setValue('impact_to_patient_care',input.impact_to_patient_care);
+	gr.setValue('scope_of_impact',input.scope_of_impact);
+	gr.setValue('ability_to_exit',input.ability_to_exit);
+	gr.setValue('length_of_commitment',input.length_of_commitment);
+	gr.setValue('honorhealth_to_vendor_relationship',input.honorhealth_to_vendor_relationship);
+	gr.setValue('historical_compliance_to_standards',input.historical_compliance_to_standards);
+	gr.setValue('contract_owner',input.contract_owner);
+	gr.setValue('home_department', input.home_department);
+	gr.setValue('service_provided', input.service_provided);
+	
+	
+	gr.update();	
+}
+
+function getContracts(){
+
+	var array = [];
+	var module = new GlideRecord('x_sthc_contract_in_contract_intake_review');
+	
+		//crChange.setLimit(100);
+		module.query();
+		
+		
+		while (module.next()){
+			var contract ={};
+			contract.sysID = module.getUniqueValue();
+			contract.ability_to_exit = module.getDisplayValue('ability_to_exit');
+			contract.final_risk_score = module.getDisplayValue('final_risk_score');
+			contract.historical_compliance_to_standards = module.getDisplayValue('historical_compliance_to_standards');
+			contract.honorhealth_to_vendor_relationship = module.getDisplayValue('honorhealth_to_vendor_relationship');
+			contract.impact_to_patient_care = module.getDisplayValue('impact_to_patient_care');
+			contract.length_of_commitment = module.getDisplayValue('length_of_commitment');
+			contract.scope_of_impact = module.getDisplayValue('scope_of_impact');
+			contract.contract_id = module.getDisplayValue('contract_id');
+			contract.short_description = module.getDisplayValue('short_description');
+			contract.contract_owner = module.getDisplayValue('contract_owner');
+			contract.home_department = module.getDisplayValue('home_department');
+			contract.service_provided = module.getDisplayValue('service_provided');
+			
+			contract.impact_to_patient_care_value = module.getDisplayValue('impact_to_patient_care_value');
+			contract.scope_of_impact_value = module.getDisplayValue('scope_of_impact_value');
+			contract.ability_to_exit_value = module.getDisplayValue('ability_to_exit_value');
+			contract.length_of_commitment_value = module.getDisplayValue('length_of_commitment_value');
+			contract.honorhealth_to_vendor_relationship_value = module.getDisplayValue('honorhealth_to_vendor_relationship_value');
+			contract.historical_compliance_to_standards_value = module.getDisplayValue('historical_compliance_to_standards_value');
+
+			contract.updated_by = module.getDisplayValue('sys_updated_by');
+			contract.updated = module.getDisplayValue('sys_updated_on');
+			
+			contract.patient_care_value = module.getValue('impact_to_patient_care');
+			contract.scope_value = module.getValue('scope_of_impact');
+			contract.exit_value = module.getValue('ability_to_exit');
+			contract.commitment_value = module.getValue('length_of_commitment');
+			contract.relationship_value = module.getValue('honorhealth_to_vendor_relationship');
+			contract.compliance_value =module.getValue('historical_compliance_to_standards');
+			
+			array.push(contract);
+		}
+	
+return array;
+}]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>LGOMEZ</sys_created_by>
+        <sys_created_on>2019-12-20 20:27:00</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>f8974e1adbf188d4a1dd7d8bbf96191b</sys_id>
+        <sys_mod_count>134</sys_mod_count>
+        <sys_name>Contract Intake</sys_name>
+        <sys_package display_value="Contract Intake Review" source="x_sthc_contract_in">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Contract Intake Review">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_scope>
+        <sys_update_name>sp_widget_f8974e1adbf188d4a1dd7d8bbf96191b</sys_update_name>
+        <sys_updated_by>lgomez</sys_updated_by>
+        <sys_updated_on>2020-01-03 21:14:47</sys_updated_on>
+        <template><![CDATA[
+
+<form class="form-horizontal form">
+<fieldset>
+
+
+
+<!-- Select Basic -->
+  
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Contract Number</label>
+  <div class="col-md-6">
+   <input ng-model-options="{ debounce: 1500 }" ng-change="c.idChange()" type="number" ng-model="data.contract_number" name="contract_number" min="1" type="text" placeholder="" class="form-control input-md">
+  </div>
+</div>
+  
+  
+  
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="short_description">Name of Contract</label>  
+  <div class="col-md-6">
+  <input ng-model="data.short_description" id="short_description" name="short_description" type="text" placeholder="" class="form-control input-md">
+  </div>
+</div>
+  
+  <!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="short_description">Contract Owner</label>  
+  <div class="col-md-6">
+  <input ng-model="data.contract_owner" id="contract_owner" name="contract_owner" type="text" placeholder="" class="form-control input-md">
+  </div>
+</div>
+  
+  <!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="short_description">Home Department</label>  
+  <div class="col-md-6">
+  <input ng-model="data.home_department" id="home_department" name="home_department" type="text" placeholder="" class="form-control input-md">
+  </div>
+</div>
+  
+  <!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="short_description">Service Provided</label>  
+  <div class="col-md-6">
+  <input ng-model="data.service_provided" id="service_provided" name="service_provided" type="text" placeholder="" class="form-control input-md">
+  </div>
+</div>
+  
+  
+  
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Impact to Patient Care</label>
+  <div class="col-md-6">
+    <select class="mdb-select md-form colorful-select dropdown-primary" ng-model="data.impact_to_patient_care" id="impact_to_patient_care" name="impact_to_patient_care" class="form-control">
+      <option value=""></option>
+      <option value="1">Never</option>
+      <option value="2">Rarely</option>
+      <option value="3">Weekly</option>
+      <option value="4">Daily</option>
+      <option value="5">Hourly</option>
+    </select>
+  </div>
+</div>
+  
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Scope of Impact</label>
+  <div class="col-md-6">
+    <select ng-model="data.scope_of_impact" id="scope_of_impact" name="scope_of_impact" class="form-control">
+      <option value=""></option>
+      <option value="1">Network Wide</option>
+      <option value="2">Campus</option>
+      <option value="3">Department</option>
+    </select>
+  </div>
+</div>
+  
+    <div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Ability to Exit</label>
+  <div class="col-md-6">
+    <select ng-model="data.ability_to_exit" id="ability_to_exit" name="ability_to_exit" class="form-control">
+      <option value=""></option>
+      <option value="1">No Cost, No Notification</option>
+      <option value="2">No Cost, Notification Required</option>
+      <option value="3">&lt;$5000 Cost, Notification Required</option>
+      <option value="4">&gt;$5000 Cost, Stipulations, Strings Attached</option>
+      <option value="5">&gt;50,000 Cost, Stipulations, Strings Attached</option>
+    </select>
+  </div>
+</div>
+  
+      <div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Length of Commitment</label>
+  <div class="col-md-6">
+    <select ng-model="data.length_of_commitment" id="length_of_commitment" name="length_of_commitment" class="form-control">
+      <option value=""></option>
+      <option value="1">Less than 1 year</option>
+      <option value="2">Less than 2 years</option>
+      <option value="3">Less than 3 years</option>
+      <option value="4">Less than 5 years</option>
+      <option value="5">More than 5 years</option>
+    </select>
+  </div>
+</div>
+  
+   <div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">HonorHealth to Vendor Relationship</label>
+  <div class="col-md-6">
+    <select ng-model="data.honorhealth_to_vendor_relationship" id="honorhealth_to_vendor_relationship" name="honorhealth_to_vendor_relationship" class="form-control">
+      <option value=""></option>
+      <option value="1">Excellent</option>
+      <option value="2">Good</option>
+      <option value="3">Fair</option>
+      <option value="4">Poor</option>
+      <option value="0">Unkown</option>
+    </select>
+  </div>
+</div>
+  
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Historical Compliance to Standards</label>
+  <div class="col-md-6">
+    <select ng-model="data.historical_compliance_to_standards" id="historical_compliance_to_standards" name="historical_compliance_to_standards" class="form-control">
+      <option value=""></option>
+      <option value="1">Always Positive</option>
+      <option value="2">Usually Positive</option>
+      <option value="3">Sometimes Positive</option>
+      <option value="4">Sometimes or Usually Negative</option>
+      <option value="1">New/no history</option>
+    </select>
+  </div>
+</div>
+  
+</fieldset>
+  
+  <button ng-if="(!data.found)" class="button" ng-click="c.submit()">Submit</button>
+  <button ng-if="(data.found)" class="button" ng-click="c.update()">Update</button>
+  <button class="buttonRed" ng-click="c.clear()">Clear Form</button>
+</form>]]></template>
+    </sp_widget>
+</record_update>

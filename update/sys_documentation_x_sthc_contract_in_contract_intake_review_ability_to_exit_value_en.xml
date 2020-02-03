@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="ability_to_exit_value" label="Ability to Exit Value" language="en" table="x_sthc_contract_in_contract_intake_review">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>ability_to_exit_value</element>
+            <help/>
+            <hint/>
+            <label>Ability to Exit Value</label>
+            <language>en</language>
+            <name>x_sthc_contract_in_contract_intake_review</name>
+            <plural>Ability to Exit Values</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>lgomez</sys_created_by>
+            <sys_created_on>2019-12-27 17:53:05</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>2a7721ecdb424c18a1dd7d8bbf9619e4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Ability to Exit Value</sys_name>
+            <sys_package display_value="Contract Intake Review" source="x_sthc_contract_in">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Contract Intake Review">74a2bee9db3dc0d4a1dd7d8bbf961997</sys_scope>
+            <sys_update_name>sys_documentation_x_sthc_contract_in_contract_intake_review_ability_to_exit_value_en</sys_update_name>
+            <sys_updated_by>lgomez</sys_updated_by>
+            <sys_updated_on>2019-12-27 17:53:05</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
